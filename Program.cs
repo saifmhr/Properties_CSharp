@@ -8,22 +8,33 @@ public class Student
     private int _passMark=35;
 
 
-    public int PassMarks()
+    public int PassMark
     {
-        return this._passMark;
-    }
-    public void SetName(string Name)
-    {
-        if (string.IsNullOrEmpty(Name))
+        get
         {
-            throw new Exception("Name can not be null or empty");
+            return this._passMark;
         }
-        this._name = Name;
+    }
+    public string Name
+    {
+        set
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new Exception("Name can not be null or empty");
+            }
+            this._name = value;
+        }
+        get
+        {
+            return string.IsNullOrEmpty(this._name) ? "no-name" : this._name;
+
+        }
     }
 
-    public string GetName()
-    {
-        return string.IsNullOrEmpty(this._name) ? "no-name" : this._name;
+   // public string GetName()
+   // {
+       // return string.IsNullOrEmpty(this._name) ? "no-name" : this._name;
 
         //if (string.IsNullOrEmpty(this._name))
         //{
@@ -33,20 +44,23 @@ public class Student
         //{
         //    return this._name;
         //}
-    }
-    public void SetID(int Id)
+   // }
+    public int Id
     {
-        if (Id <= 0)
+        set
         {
-            throw new Exception("Id can not be negative");
+            if (value <= 0)
+            {
+                throw new Exception("Id can not be negative");
+            }
+            this._id = value;
         }
-        this._id = Id;
+        get
+        {
+            return this._id;
+        }
     }
 
-    public int GetId()
-    {
-        return this._id;
-    }
 }
  
 public class Program
@@ -54,11 +68,15 @@ public class Program
       public  static void Main()
         {
          Student C1 =new Student();
-          C1.SetID(1);
-        C1.SetName("saif");
-        Console.WriteLine("Student Id ={0}", C1.GetId());
-        Console.WriteLine("Student name ={0}", C1.GetName());
-        Console.WriteLine("Student Pass marks ={0}", C1.PassMarks());
+          C1.Id = 1;
+        C1.Name = "Saifullah";
+
+        Console.WriteLine("Student Id ={0} ", C1.Id);
+        Console.WriteLine("Student name ={0} ", C1.Name);
+        Console.WriteLine("Student Pass marks ={0} ", C1.PassMark);
+       
+        
+        
         //C1.ID = 101;
         //C1.Name = null;
         //C1.PassMark = 0;
